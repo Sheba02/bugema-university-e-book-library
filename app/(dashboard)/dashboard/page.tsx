@@ -28,7 +28,7 @@ export default async function DashboardPage() {
 
   const recommended = books.filter((book) =>
     progress.inProgress?.every(
-      (entry) => entry.book?._id?.toString() !== book._id?.toString(),
+      (entry) => entry.book?.toString() !== book._id?.toString(),
     ),
   );
 
@@ -81,4 +81,3 @@ export default async function DashboardPage() {
     </div>
   );
 }
-
