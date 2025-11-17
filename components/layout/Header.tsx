@@ -54,7 +54,7 @@ export function Header({ initialUser }: HeaderProps) {
           {links.map((link) => (
             <Link
               key={link.href}
-              href={link.href}
+              href={link.href as any}
               className={
                 pathname === link.href
                   ? "text-primary"
@@ -94,7 +94,7 @@ export function Header({ initialUser }: HeaderProps) {
             {links.map((link) => (
               <Link
                 key={link.href}
-                href={link.href}
+                href={link.href as any}
                 onClick={() => setOpen(false)}
                 className={
                   pathname === link.href
@@ -121,4 +121,3 @@ export function Header({ initialUser }: HeaderProps) {
     </header>
   );
 }
-
