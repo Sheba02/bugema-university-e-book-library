@@ -22,6 +22,11 @@ const schemaMap = {
   register: registerSchema,
 } as const;
 
+function FieldError({ message }: { message?: string }) {
+  if (!message) return null;
+  return <p className="text-xs text-destructive">{message}</p>;
+}
+
 export function AuthForm({ mode }: { mode: Mode }) {
   const router = useRouter();
   const { login, register: registerUser, isLoggingIn, isRegistering, error } =
@@ -64,7 +69,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
             placeholder="Jane Doe"
             {...form.register("name")}
           />
-          <FieldError message={form.formState.errors?.name?.message} />
+          <FieldError message={(form.formState.errors as any)?.name?.message} />
         </div>
       )}
       <div className="space-y-2">
@@ -98,9 +103,3 @@ export function AuthForm({ mode }: { mode: Mode }) {
     </form>
   );
 }
-
-function FieldError({ message }: { message?: string }) {
-  if (!message) return null;
-  return <p className="text-xs text-destructive">{message}</p>;
-}
-
